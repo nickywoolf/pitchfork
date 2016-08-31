@@ -22,9 +22,8 @@ new Vue({
       this.reviews.push(review);
     });
 
-    ipcRenderer.on('next', (event, url) => {
-      let matches = /\?offset=(\d.*)$/.exec(url);
-      this.next = matches ? matches[1] : 0;
+    ipcRenderer.on('next', (event, offset) => {
+      this.next = offset;
     });
 
     componentHandler.upgradeDom();

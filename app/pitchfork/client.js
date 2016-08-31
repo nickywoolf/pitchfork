@@ -2,21 +2,21 @@
 const https = require('https');
 const request = require('request');
 
-module.exports = Pitchfork;
+module.exports.Client = Client;
 
-function Pitchfork() {
+function Client() {
   this.api = 'https://api.pitchfork.com/api/v1';
 }
 
-Pitchfork.prototype.albumReviews = function (offset, callback) {
+Client.prototype.albumReviews = function (offset, callback) {
   this.request(`albumreviews/?offset=${offset}`, 'GET', callback);
 };
 
-Pitchfork.prototype.request = function (path, method, callback) {
+Client.prototype.request = function (path, method, callback) {
   request(this.options(path, method), callback);
 };
 
-Pitchfork.prototype.options = function (path, method) {
+Client.prototype.options = function (path, method) {
   return options = {
     url: `${this.api}/${path}`,
     method: method,
@@ -24,7 +24,7 @@ Pitchfork.prototype.options = function (path, method) {
   }
 };
 
-Pitchfork.prototype.agent = function () {
+Client.prototype.agent = function () {
   return new https.Agent({
     host: 'api.pitchfork.com',
     port: '443',
