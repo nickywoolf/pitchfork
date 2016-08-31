@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pitchfork Reviews</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.2.0/material.indigo-pink.min.css">
+    <link rel="stylesheet" href="app.css">
+  </head>
+  <body class="mdl-color--blue-grey-600">
+
+    <div id="app" class="">
+      <div class="review mdl-card mdl-shadow--2dp" v-for="review in reviews">
+        <div class="mdl-card__title" style="background-image: url('{{ review.image }}');"> </div>
+
+        <div class="mdl-card__supporting-text">
+          <strong>{{ review.artist }} | {{ review.album }}</strong>
+          <div v-if="review.genres">
+            ({{ review.genres }})
+          </div>
+        </div>
+
+        <div class="mdl-card__menu">
+          <a href="{{ review.url }}" target="_blank">
+            <button class="mdl-button mdl-js-button mdl-button--fab mdl-button--colored mdl-js-ripple-effect">
+              {{ review.rating }}
+            </button>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <script type="text/javascript" src="https://code.getmdl.io/1.2.0/material.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.26/vue.js"></script>
+    <script type="text/javascript" src="render.js"></script>
+  </body>
+</html>
