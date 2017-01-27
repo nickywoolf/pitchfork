@@ -2,11 +2,9 @@ const {ipcMain} = require('electron');
 const menubar = require('menubar')({
    dir: `${__dirname}/app`,
    width: 365,
-   height: 500
+   height: 550
  });
 const pitchfork = require('./app/pitchfork');
-
-menubar.on('ready', function ready() { });
 
 ipcMain.on('load-reviews', (event, offset) => {
   pitchfork.client.albumReviews(offset, (err, resp, body) => {

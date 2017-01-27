@@ -27,5 +27,11 @@ new Vue({
     });
 
     componentHandler.upgradeDom();
+
+    window.onscroll = () => {
+      if (window.innerHeight + window.scrollY == document.body.scrollHeight) {
+        this.loadReviews();
+      }
+    };
   }
 });

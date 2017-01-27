@@ -1,7 +1,7 @@
 module.exports.parse = (response) => {
   let reviews = JSON.parse(response);
   let matches = /\?offset=(\d.*)$/.exec(reviews.next);
-  
+
   return {
     next: matches ? matches[1] : 0,
     results: reviews.results.map((review) => {
@@ -31,7 +31,7 @@ Review.prototype.artist = function () {
 };
 
 Review.prototype.album = function () {
-  return this.review.tombstone.albums[0].display_name;
+  return this.review.tombstone.albums[0].album.display_name;
 };
 
 Review.prototype.genres = function () {
